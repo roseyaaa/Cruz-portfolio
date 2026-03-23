@@ -614,6 +614,18 @@ nav ul li a.active-link::after {
     opacity: 0.9;
 }
 
+.site-footer {
+    padding: 24px 0 36px;
+    border-top: 1px solid rgba(232, 188, 240, 0.28);
+    text-align: center;
+}
+
+.site-footer p {
+    color: #C8A2C9;
+    font-size: 15px;
+    letter-spacing: 0.4px;
+}
+
 @media (max-width: 1100px) {
     .container {
         padding: 10px 6%;
@@ -835,6 +847,14 @@ nav ul li a.active-link::after {
     .contact-link {
         width: 100%;
         text-align: center;
+    }
+
+    .site-footer {
+        padding: 20px 0 28px;
+    }
+
+    .site-footer p {
+        font-size: 14px;
     }
 }
 
