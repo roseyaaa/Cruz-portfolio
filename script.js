@@ -5,6 +5,25 @@ const navbar = document.querySelector("nav");
 const navToggle = document.querySelector(".nav-toggle");
 const mobileMenuBreakpoint = window.matchMedia("(max-width: 768px)");
 
+// GitHub Pages repository sites are served from /<repo-name>/, so relative
+// image paths can fail after deployment if the browser resolves them against
+// the wrong base. This normalizes image URLs only on github.io hosts.
+function normalizeImagePathsForGitHubPages() {
+  if (!window.location.hostname.endsWith("github.io")) return;
+
+  const pathParts = window.location.pathname.split("/").filter(Boolean);
+  if (!pathParts.length) return;
+
+  const repoBase = `/${pathParts[0]}/`;
+
+  document.querySelectorAll('img[src^="images/"]').forEach((image) => {
+    const relativeSrc = image.getAttribute("src");
+    image.src = `${repoBase}${relativeSrc}`;
+  });
+}
+
+normalizeImagePathsForGitHubPages();
+
 const navItems = navLinks
   .map((link) => {
     const target = document.querySelector(link.getAttribute("href"));
